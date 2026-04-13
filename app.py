@@ -93,37 +93,36 @@ class Crypto:
 
 
 def main():
+
     app = Crypto()
+    while True:
+        menu = """
+        [bold cyan]1[/bold cyan] PRICE UNIQUE CRYPTO 
+        [bold cyan]2[/bold cyan] PRICE FOR PAR CRYPTO 
+        [bold cyan]3[/bold cyan] TOP CRYPTOS 
+        [bold cyan]4[/bold cyan] SAIR
+        """
+        console.print(Panel(menu, title="[bold green]MENU CRYPTO[/bold green]", expand=False))
+        select = Prompt.ask("Selecione")
+        if select == "1":
+            crypto = Prompt.ask("Crypto")
+            currency = Prompt.ask("Currency ex: usd")
+            app.get_price(crypto, currency)
+ 
+        elif select == "2":
+            crypto1 = Prompt.ask("Crypto 1")
+            crypto2 = Prompt.ask("Crypto 2")
+            moeda = Prompt.ask("Currency ex: usd")
+            app.get_par(crypto1, crypto2, moeda)
 
-    menu = """
-[bold cyan]1[/bold cyan] PRICE UNIQUE CRYPTO
-[bold cyan]2[/bold cyan] PRICE FOR PAR CRYPTO
-[bold cyan]3[/bold cyan] TOP CRYPTOS
-[bold cyan]4[/bold cyan] SAIR
-"""
-    console.print(Panel(menu, title="[bold green]MENU CRYPTO[/bold green]", expand=False))
+        elif select == "3":
+            app.get_top()
 
-    select = Prompt.ask("Selecione")
+        elif select == "4":
+            console.print("[bold magenta]Saindo...[/bold magenta]")
 
-    if select == "1":
-        crypto = Prompt.ask("Crypto")
-        currency = Prompt.ask("Currency ex: usd")
-        app.get_price(crypto, currency)
-
-    elif select == "2":
-        crypto1 = Prompt.ask("Crypto 1")
-        crypto2 = Prompt.ask("Crypto 2")
-        moeda = Prompt.ask("Currency ex: usd")
-        app.get_par(crypto1, crypto2, moeda)
-
-    elif select == "3":
-        app.get_top()
-
-    elif select == "4":
-        console.print("[bold magenta]Saindo...[/bold magenta]")
-
-    else:
-        console.print("[bold red]Opção inválida.[/bold red]")
+        else:
+            console.print("[bold red]Opção inválida.[/bold red]")
 
 
 if __name__ == "__main__":
