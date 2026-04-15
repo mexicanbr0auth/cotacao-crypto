@@ -120,6 +120,7 @@ def main():
 
         elif select == "4":
             console.print("[bold magenta]Saindo...[/bold magenta]")
+            exit(0)
 
         else:
             console.print("[bold red]Opção inválida.[/bold red]")
